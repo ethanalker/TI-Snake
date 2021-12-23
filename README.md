@@ -8,6 +8,6 @@ Str0 is used to store leaderboard names, so in order for leaderboards to work do
 Some calculators are slower than others, so I recommend adjusting the T value to change how much time to wait per frame. The default is 0.18s, and decreases by 0.002s each time a berry is eaten, and is opmtimized for TI-84 Plus CE Python Edition. The T value can be changed by going into the code and changing the value stored to it in line 47, and the time decrease per frame can be changed by changing line 87 (in version 1.4.1).
 
 todo:
-improve initial entry for leaderboards using same method as snake movement
-optimize initialization code and cleanup code, remove uneeded characters
-remove blank lines in main loop (it will make it slightly faster, so i'll do this later when i'm more confident i'll do less maintanence)
+  improve initial entry for leaderboards using same method as snake movement
+  optimize initialization code and cleanup code, remove uneeded characters
+  remove blank lines in main loop (it will make it slightly faster, so i'll do this later when i'm more confident i'll do less maintanence)
