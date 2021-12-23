@@ -1,7 +1,13 @@
 # TI-Snake
-Snake game made for a TI-84 calculator. 
+Snake game made for a TI-84 calculator.
 
 This version only works for TI-84 Plus CE, however the code could be adapted to work on older calcualtors. I don't plan to do this.
+
+Str0 and list SHI store highscore data. Don't download these if you want a clean leaderboard, but you'll have to input initals after the first few games to fill up the leaderboard.
+
+When you get a highscore, use arrow keys to input initials. Clicking enter will submit. 
+
+If you don't get a highscore, click + to view leaderboards, and enter to close the program. 
 
 Str0 is used to store leaderboard names, so in order for leaderboards to work don't overwrite Str0. There is no easy way to change the string used to store it, other than chaning all instances of Str0 found in the code.
 
