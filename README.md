@@ -3,6 +3,8 @@ Snake game made for a TI-84 calculator.
 
 This version only works for TI-84 Plus CE, however the code could be adapted to work on older calcualtors. I don't plan to do this.
 
+Use TI Connect to download the files onto your TI-84.
+
 Str0 and list SHI store highscore data. Don't download these if you want a clean leaderboard, but you'll have to input initals after the first few games to fill up the leaderboard.
 
 When you get a highscore, use arrow keys to input initials. Clicking enter will submit. 
