@@ -23,6 +23,6 @@ todo:
 
 ~~improve initial entry for leaderboards using same method as snake movement~~
 
-optimize initialization code and cleanup code, remove uneeded characters
+~~optimize initialization code and cleanup code, remove uneeded characters~~
 
-remove blank lines in main loop (it will make it slightly faster, so i'll do this later when i'm more confident i'll be doing less maintanence)
+~~remove blank lines in main loop (it will make it slightly faster, so i'll do this later when i'm more confident i'll be doing less maintanence)~~
