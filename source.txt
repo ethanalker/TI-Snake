@@ -1,264 +1,222 @@
-"V1.4.1"
+// This is only for refrence, and should not be run. In order to properly display all characters, some tokens were changed and will no longer work if pasted into a program. I'll use // notation to denote comments, however that is not an actual syntax in the lnaguage. Comments in the language can be added using quotes, however this slightly slows down the program, so I don't use them except for the version number.
+"V1.5.3
 StoreGDB 1
-SetUpEditor ⌊SNAX,⌊SNAY,⌊SHI,⌊SD1,⌊SD2,⌊I
+// initialize lists and matrices in use
+SetUpEditor ⌊SNAX,⌊SNAY,⌊SHI
 DelVar [J]{22,10→dim([J]
-Fill(0,[J]
-
-105→dim(⌊SNAX)
-Fill(10,⌊SNAX)
-105→dim(⌊SNAY)
-Fill(5,⌊SNAY)
-
-11→dim(⌊SD1)
-Fill(0,⌊SD1)
-11→dim(⌊SD2)
-Fill(0,⌊SD2)
-
-2→⌊SD1(1
-11→⌊SD2(1
-1→⌊SD1(2
-3→⌊SD2(2
-2→⌊SD1(3
-11→⌊SD2(3
-1→⌊SD1(11
-3→⌊SD2(11
-
-3→dim(⌊I)
-Fill(12,⌊I)
-
+105→dim(⌊SNAX
+Fill(10,⌊SNAX
+105→dim(⌊SNAY
+Fill(5,⌊SNAY
 If dim(⌊SHI)=0
 Then
-10→dim(⌊SHI)
-"                                 "→Str0
+10→dim(⌊SHI
+"                                 →Str0
 End
+// set up graph window
 UnArchive Str0
-"1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ"→Str9
 ClrDraw
 GridOff
 AxesOff
 PlotsOff 
 FnOff 
 BackgroundOff
-DispGraph
 0→Xmin:1→ΔX
 0→Ymin:1→ΔY
-
-­1→S
+DispGraph
+// initialize variables in use
+-1→S
 0.180→T
-
 11→X
 5→Y
+11→O
+5→P
 3→D
 1→B
 0→C
 3→N
 1→M
 0→G
-TextColor(BLACK)
-1→[J](X+1,Y+1)
-
-For(A,1,2)
-7+A→⌊SNAX(A)
-1→[J](8+A,6)
-Text(­1,80,12A+84,"O")
+TextColor(BLACK
+// create starting tail
+For(A,1,3
+7+A→⌊SNAX(A
+1→[J](8+A,6
+Text(-1,80,12A+84,"O
 End
-
-5→Y
-11→X
-11→O
-5→P
-
+// main loop
 Repeat G
-Text(­1,16⌊SNAY(N),12⌊SNAX(N),"O
-Text(­1,16Y,12X,"θ
+Text(-1,16Y,12X,"θ
 1→[J](X+1,Y+1
-
 N+1→N
-If Ans>105
+If Ans=106
 1→N
 X→⌊SNAX(Ans
 Y→⌊SNAY(N
-
-If O=X and P=Y
+// check if berry is eaten
+If O=X and P=Ans
 Then
+// score
 S+1→S
-
 If T
 T-0.002→T
-
+// gen new berry
 While [J](O+1,P+1
 int(22rand→O
 int(10rand→P
 End
-
 TextColor(RED
-Text(­1,16P,12O,"O
+Text(-1,16P,12O,"O
 TextColor(BLACK
 Else
-
-Text(­1,16⌊SNAY(M),12⌊SNAX(M)," 
-
+// delete end of tail
+Text(-1,16⌊SNAY(M),12⌊SNAX(M)," 
 0→[J](⌊SNAX(M)+1,⌊SNAY(M)+1
-
 M+1→M
-If Ans>105
+If Ans=106
 1→M
-
 End
-
-
+// add delay every frame
 Wait T
-
-
-getKey-23→E
-If Ans>0 and Ans<12
+// get user input and process it
+getKey→D
+If Ans
 Then
-If D=⌊SD1(E) or D=⌊SD2(E
-Then
-E→D
-sum(List(D={1,3→B
-sum(List(D={2,11→C
+If C
+(D=26)-(D=24)→B
+If B
+(D=34)-(D=25)→C
+If Ans
+(D=26)-(D=24)→B
 End
-End
-
+Text(-1,16Y,12X,"O
 X+B→X
 Y+C→Y
-
-
+// check if game over
 If X≥0 and X≤21 and Y≥0 and Y≤9
 If [J](X+1,Y+1) or S=100
 1→G
+// main loop end
 End
-
+Text(-1,16⌊SNAY(N),12⌊SNAX(N),"θ
+// score maxes at 100 to save memory
 If S=100
 Then
-Text(­1,48,114,"MAX")
-Text(­1,64,114,"OUT")
+Text(-1,48,114,"MAX
+Text(-1,64,114,"OUT
 Else
-Text(­1,48,108,"GAME")
-Text(­1,64,108,"OVER")
+Text(-1,48,108,"GAME
+Text(-1,64,108,"OVER
 End
-
-Text(80,100,"SCORE-"+toString(S))
-Text(150,223,"ENTER")
-
+// display score
+Text(80,100,"SCORE-"+toString(S
+Text(150,223,"ENTER
+// clean up lists and matrices no longer in use
 SetUpEditor 
 DelVar ⌊SNAX
 DelVar ⌊SNAY
-DelVar ⌊SD1
-DelVar ⌊SD2
 DelVar [J]
-
-If S≤⌊SHI(10)
+// check if highscore
+If S≤⌊SHI(10
 Then
 0→Z
-Text(150,2,"+ LEADERBOARDS")
+// click plus to open leaderboards
+Text(150,2,"+ LEADERBOARDS
 Repeat E=105 or E=95
 getKey→E
 End
 Else
-Text(100,96,"HIGHSCORE!")
+Text(100,96,"HIGHSCORE!
+// set up variables for initials input screen
 1→Z
-
+SetUpEditor ⌊I
+3→dim(⌊I
+Fill(15,⌊I
+"   1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ   →Str9
 Pause 
-
 ClrDraw
-Text(­1,74,15,"INITIALS:")
-Text(150,223,"ENTER")
-1→F
+Text(-1,74,15,"INITIALS:
+Text(150,223,"ENTER
 1→I
 1→G
+1→K
 BLACK→C
-
-While G=1
-getKey→E
-I→B
-If E=24 and I≠1
-I-1→I
-If E=26 and I≠3
-I+1→I
-
-⌊I(I)→D
-If E=25 and ⌊I(I)≠1
-⌊I(I)-1→⌊I(I)
-If E=34 and ⌊I(I)≠37
-⌊I(I)+1→⌊I(I)
-
-If E=105
-0→G
-
-For(X,1,3)
-If I≠B or F=1
+// loop for initials input screen, allows user to input three characters by manipuolating three columns of letters
+While G
+If K
 Then
-If X=I
+For(A,1,3
+If A=I or K=1
+Then
+// displays a column of seven characters, with the center character being the selected one
+For(B,-3,3
+Text(-1,74+20B,105+20A,sub(Str9,⌊I(I)+B,1
+End
+End
+// displays a red box around active column, displays a black box around inactive columns
+If A=I
 RED→C
-Line(102+20X,73,102+20X,92,C,1)
-Line(102+20X,73,117+20X,73,C,1)
-Line(102+20X,92,117+20X,92,C,1)
-Line(117+20X,73,117+20X,92,C,1)
+Line(102+20A,73,102+20A,92,C,1
+Line(102+20A,73,117+20A,73,C,1
+Line(102+20A,92,117+20A,92,C,1
+Line(117+20A,73,117+20A,92,C,1
 BLACK→C
 End
-
-If (⌊I(I)≠D and X=I) or F=1
-Then
-For(A,­3,3)
-If ⌊I(X)+A>0 and ⌊I(X)+A<38
-Then
-Text(­1,74+20A,105+20X,sub(Str9,⌊I(X)+A,1))
-Else
-Text(­1,74+20A,105+20X," ")
 End
+// takes user input to change column or move up and down a column
+getKey→K
+min(3,max(1,I+sum(ΔList(K={24,26→I
+min(40,max(4,⌊I(I)+sum(ΔList(K={25,34→⌊I(I)
+// if user clicks enter, end loop
+If K=105
+0→G
 End
-End
-End
-
-0→E
-0→F
-End
+// store selected characters to a string
 sub(Str9,⌊I(1),1)+sub(Str9,⌊I(2),1)+sub(Str9,⌊I(3),1)→Str1
-
-
-For(A,10,1,­1)
-If S≥⌊SHI(A)
+// clean up variables no longer in use
+DelVar ⌊I
+DelVar Str9
+// finds position of highscore
+For(A,10,1,-1)
+If S≥⌊SHI(A
 A→G
 End
-For(Q,10,G,­1)
-⌊SHI(Q)→⌊SHI(Q+1)
-S→⌊SHI(Q)
+// places user's score in highscore list
+For(Q,10,G,-1
+⌊SHI(Q→⌊SHI(Q+1
+S→⌊SHI(Q
 End
-If G≠1:sub(Str0,1,3G-3)→Str2
-sub(Str0,3G-2,3(11-G))→Str3
-If G=1
-Then
+// places user's initials in highscore string
+If G≠1
+sub(Str0,1,3G-3→Str2
+sub(Str0,3G-2,33-3G→Str3
 Str1+Str3→Str0
-Else
-Str2+Str1+Str3→Str0
+If G≠1
+Str2+Str0→Str0
 End
-End
-
+// if user clicked plus to open leaderboards or got a highscore, display leaderboards
 If Z=1 or E=95
 Then
 ClrDraw
-Text(­1,1,64,"LEADERBOARDS")
-Text(­1,30,24,"1ST-"+sub(Str0,1,3)+"-"+toString(⌊SHI(1))
-Text(­1,80,24,"2ND-"+sub(Str0,4,3)+"-"+toString(⌊SHI(2))
-Text(­1,130,24,"3RD-"+sub(Str0,7,3)+"-"+toString(⌊SHI(3))
-For(E,4,10)
-Text(35+15(E-4),170,toString(E)+"-"+sub(Str0,10+3(E-4),3)+"-"+toString(⌊SHI(E))
+Text(-1,1,64,"LEADERBOARDS
+Text(-1,30,24,"1ST-"+sub(Str0,1,3)+"-"+toString(⌊SHI(1
+Text(-1,80,24,"2ND-"+sub(Str0,4,3)+"-"+toString(⌊SHI(2
+Text(-1,130,24,"3RD-"+sub(Str0,7,3)+"-"+toString(⌊SHI(3
+For(E,4,10
+Text(15E-25,170,toString(E)+"-"+sub(Str0,3E-2,3)+"-"+toString(⌊SHI(E
 End
-Text(150,223,"ENTER")
+Text(150,223,"ENTER
 Pause 
-ClrDraw
 End
-
+// cleanup graph screen and variables no longer in use
 DelVar Str1
 DelVar Str2
 DelVar Str3
-DelVar ⌊I
-DelVar Str9
+// archive highscore data
 Archive ⌊SHI
 Archive Str0
 ClrDraw
 RecallGDB 1
 DelVar GDB1
+// returns user to homescreen
 Disp 
