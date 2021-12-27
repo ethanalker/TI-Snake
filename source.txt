@@ -1,4 +1,6 @@
-// This is only for refrence, and should not be run. In order to properly display all characters, some tokens were changed and will no longer work if pasted into a program. I'll use // notation to denote comments, however that is not an actual syntax in the lnaguage. Comments in the language can be added using quotes, however this slightly slows down the program, so I don't use them except for the version number.
+// This is only for refrence, and should not be run. In order to properly display all characters, some tokens were changed and will no longer work if pasted into a program.
+// I'll use // notation to denote comments, however that is not an actual syntax in the lnaguage.
+// Comments can be added using quotes, however this slightly slows down the program, so I don't use them except for the version number.
 "V1.5.3
 StoreGDB 1
 // initialize lists and matrices in use
@@ -56,7 +58,7 @@ Y→⌊SNAY(N
 // check if berry is eaten
 If O=X and P=Ans
 Then
-// score
+// increase score
 S+1→S
 If T
 T-0.002→T
